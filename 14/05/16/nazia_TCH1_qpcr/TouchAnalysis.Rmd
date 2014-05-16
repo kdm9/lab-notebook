@@ -1,0 +1,39 @@
+Nazia's qPCR on Touch Expt
+==========================
+
+Load us some data!
+```{r}
+library(plyr)
+touch_qpcr = read.csv("Assay64_touch_qpcr.csv")
+str(touch_qpcr)
+summary(touch_qpcr)
+summary(touch_qpcr$Primer)
+```
+
+Collapse tech reps down to biological reps
+```{r}
+
+touch_qpcr_old = touch_qpcr
+touch_qpcr = ddply(touch_qpcr, .(Genotype, Touch, Rep, Primer), summarise, Value= mean(Value))
+
+```
+
+
+```{r fig.width=8}
+primers = list()
+aovs = list()
+for (i in 1:length(levels(touch_qpcr$Primer))) {
+  primer = levels(touch_qpcr$Primer)[i]
+  primers[[i]] =  touch_qpcr[touch_qpcr$Primer == primer,]
+  primers[[i]]$Value = primers[[i]]$Value / primers[[1]]$Value
+  print(primer)
+  print(summary(primers[[i]]))
+  aovs[[i]] = aov(Value~Genotype*Touch, data=primers[[i]])
+  print(summary(aovs[[i]]))
+  print(TukeyHSD(aovs[[i]]))
+  boxplot(Value~Genotype*Touch, data=primers[[i]])
+  title(primer)
+}
+
+```
+

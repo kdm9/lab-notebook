@@ -1,0 +1,289 @@
+Genotype,Rep,Touch,Primer,Value
+Col,1,NotTouched,Cyclo,21.08
+Col,1,NotTouched,Cyclo,20.94
+Col,1,NotTouched,Cyclo,20.73
+Col,2,NotTouched,Cyclo,20.24
+Col,2,NotTouched,Cyclo,20.6
+Col,2,NotTouched,Cyclo,20.28
+Col,3,NotTouched,Cyclo,21.71
+Col,3,NotTouched,Cyclo,22.04
+Col,3,NotTouched,Cyclo,21.74
+ccr1,1,NotTouched,Cyclo,20.55
+ccr1,1,NotTouched,Cyclo,20.44
+ccr1,1,NotTouched,Cyclo,20.72
+ccr1,2,NotTouched,Cyclo,21.18
+ccr1,2,NotTouched,Cyclo,21.16
+ccr1,2,NotTouched,Cyclo,21.27
+ccr1,3,NotTouched,Cyclo,21.18
+ccr1,3,NotTouched,Cyclo,20.5
+ccr1,3,NotTouched,Cyclo,20.85
+Col,1,Touched,Cyclo,20.92
+Col,1,Touched,Cyclo,20.61
+Col,1,Touched,Cyclo,20.66
+Col,2,Touched,Cyclo,20.97
+Col,2,Touched,Cyclo,20.84
+Col,2,Touched,Cyclo,20.73
+Col,3,Touched,Cyclo,20.78
+Col,3,Touched,Cyclo,20.76
+Col,3,Touched,Cyclo,20.64
+ccr1,1,Touched,Cyclo,21.4
+ccr1,1,Touched,Cyclo,21.59
+ccr1,1,Touched,Cyclo,21.29
+ccr1,2,Touched,Cyclo,21.39
+ccr1,2,Touched,Cyclo,21.32
+ccr1,2,Touched,Cyclo,21.37
+ccr1,3,Touched,Cyclo,21.84
+ccr1,3,Touched,Cyclo,21.87
+ccr1,3,Touched,Cyclo,22.01
+Col,1,NotTouched,Cyclo Prom,35.81
+Col,1,NotTouched,Cyclo Prom,35.52
+Col,1,NotTouched,Cyclo Prom,37.71
+Col,2,NotTouched,Cyclo Prom,36.14
+Col,2,NotTouched,Cyclo Prom,37.15
+Col,2,NotTouched,Cyclo Prom,40.77
+Col,3,NotTouched,Cyclo Prom,34.22
+Col,3,NotTouched,Cyclo Prom,35.09
+Col,3,NotTouched,Cyclo Prom,36.56
+ccr1,1,NotTouched,Cyclo Prom,29.8
+ccr1,1,NotTouched,Cyclo Prom,31.57
+ccr1,1,NotTouched,Cyclo Prom,33.41
+ccr1,2,NotTouched,Cyclo Prom,29.69
+ccr1,2,NotTouched,Cyclo Prom,32.61
+ccr1,2,NotTouched,Cyclo Prom,33.06
+ccr1,3,NotTouched,Cyclo Prom,31.92
+ccr1,3,NotTouched,Cyclo Prom,30.05
+ccr1,3,NotTouched,Cyclo Prom,36.6
+Col,1,Touched,Cyclo Prom,34.04
+Col,1,Touched,Cyclo Prom,35.79
+Col,1,Touched,Cyclo Prom,39.57
+Col,2,Touched,Cyclo Prom,32.65
+Col,2,Touched,Cyclo Prom,34.36
+Col,2,Touched,Cyclo Prom,30.24
+Col,3,Touched,Cyclo Prom,34.19
+Col,3,Touched,Cyclo Prom,29.89
+Col,3,Touched,Cyclo Prom,31.01
+ccr1,1,Touched,Cyclo Prom,29.99
+ccr1,1,Touched,Cyclo Prom,33.68
+ccr1,1,Touched,Cyclo Prom,35.17
+ccr1,2,Touched,Cyclo Prom,35.35
+ccr1,2,Touched,Cyclo Prom,33.9
+ccr1,2,Touched,Cyclo Prom,34.45
+ccr1,3,Touched,Cyclo Prom,32.62
+ccr1,3,Touched,Cyclo Prom,33.29
+ccr1,3,Touched,Cyclo Prom,29.65
+Col,3,NotTouched,IC2,8.92
+Col,1,Touched,IC2,9.27
+Col,1,Touched,IC2,9.18
+Col,1,Touched,IC2,9.24
+Col,2,Touched,IC2,9.25
+Col,2,Touched,IC2,9.28
+Col,2,Touched,IC2,9.31
+Col,3,Touched,IC2,9.04
+Col,3,Touched,IC2,9.27
+Col,3,Touched,IC2,9.22
+Col,1,NotTouched,IC2,8.56
+ccr1,1,NotTouched,IC2,8.9
+ccr1,1,NotTouched,IC2,8.96
+ccr1,1,NotTouched,IC2,8.96
+ccr1,2,NotTouched,IC2,8.96
+ccr1,2,NotTouched,IC2,8.97
+ccr1,2,NotTouched,IC2,9.08
+ccr1,3,NotTouched,IC2,8.72
+ccr1,3,NotTouched,IC2,8.84
+ccr1,3,NotTouched,IC2,8.9
+ccr1,1,Touched,IC2,9.41
+Col,1,NotTouched,IC2,8.71
+ccr1,1,Touched,IC2,9.21
+ccr1,1,Touched,IC2,9.15
+ccr1,2,Touched,IC2,9.36
+ccr1,2,Touched,IC2,9.56
+ccr1,2,Touched,IC2,9.68
+ccr1,3,Touched,IC2,9.36
+ccr1,3,Touched,IC2,9.31
+ccr1,3,Touched,IC2,9.12
+Col,1,NotTouched,IC2,8.76
+Col,2,NotTouched,IC2,9.65
+Col,2,NotTouched,IC2,9.7
+Col,2,NotTouched,IC2,9.81
+Col,3,NotTouched,IC2,8.9
+Col,3,NotTouched,IC2,8.85
+Col,1,NotTouched,PP2A,20.19
+Col,1,NotTouched,PP2A,20.14
+Col,1,NotTouched,PP2A,20.21
+Col,2,NotTouched,PP2A,19.77
+Col,2,NotTouched,PP2A,19.71
+Col,2,NotTouched,PP2A,20.02
+Col,3,NotTouched,PP2A,20.98
+Col,3,NotTouched,PP2A,21.27
+Col,3,NotTouched,PP2A,21.15
+ccr1,1,NotTouched,PP2A,20.51
+ccr1,1,NotTouched,PP2A,20.25
+ccr1,1,NotTouched,PP2A,20.48
+ccr1,2,NotTouched,PP2A,20.92
+ccr1,2,NotTouched,PP2A,20.78
+ccr1,2,NotTouched,PP2A,20.59
+ccr1,3,NotTouched,PP2A,20.03
+ccr1,3,NotTouched,PP2A,19.98
+ccr1,3,NotTouched,PP2A,20.17
+Col,1,Touched,PP2A,20.45
+Col,1,Touched,PP2A,20.35
+Col,1,Touched,PP2A,20.19
+Col,2,Touched,PP2A,20.56
+Col,2,Touched,PP2A,20.42
+Col,2,Touched,PP2A,20.46
+Col,3,Touched,PP2A,20.09
+Col,3,Touched,PP2A,20.11
+Col,3,Touched,PP2A,20.1
+ccr1,1,Touched,PP2A,20.61
+ccr1,1,Touched,PP2A,20.43
+ccr1,1,Touched,PP2A,20.65
+ccr1,2,Touched,PP2A,20.64
+ccr1,2,Touched,PP2A,20.62
+ccr1,2,Touched,PP2A,20.84
+ccr1,3,Touched,PP2A,20.94
+ccr1,3,Touched,PP2A,20.8
+ccr1,3,Touched,PP2A,20.98
+Col,1,NotTouched,STPK,19.31
+Col,1,NotTouched,STPK,19.34
+Col,1,NotTouched,STPK,19.42
+Col,2,NotTouched,STPK,18.95
+Col,2,NotTouched,STPK,19.01
+Col,2,NotTouched,STPK,19.22
+Col,3,NotTouched,STPK,19.99
+Col,3,NotTouched,STPK,19.69
+Col,3,NotTouched,STPK,20.03
+ccr1,1,NotTouched,STPK,26.33
+ccr1,1,NotTouched,STPK,21.04
+ccr1,1,NotTouched,STPK,20.88
+ccr1,2,NotTouched,STPK,20.48
+ccr1,2,NotTouched,STPK,20.62
+ccr1,2,NotTouched,STPK,20.71
+ccr1,3,NotTouched,STPK,19.46
+ccr1,3,NotTouched,STPK,19.46
+ccr1,3,NotTouched,STPK,19.5
+Col,1,Touched,STPK,16.83
+Col,1,Touched,STPK,16.93
+Col,1,Touched,STPK,17.17
+Col,2,Touched,STPK,16.74
+Col,2,Touched,STPK,16.84
+Col,2,Touched,STPK,17.42
+Col,3,Touched,STPK,16.92
+Col,3,Touched,STPK,16.83
+Col,3,Touched,STPK,17.32
+ccr1,1,Touched,STPK,18.13
+ccr1,1,Touched,STPK,18.46
+ccr1,1,Touched,STPK,18.31
+ccr1,2,Touched,STPK,18.59
+ccr1,2,Touched,STPK,18.93
+ccr1,2,Touched,STPK,19.17
+ccr1,3,Touched,STPK,19.19
+ccr1,3,Touched,STPK,18.77
+ccr1,3,Touched,STPK,18.91
+Col,3,NotTouched,TCH3,16.89
+Col,3,NotTouched,TCH3,16.68
+ccr1,1,NotTouched,TCH3,18.06
+ccr1,1,NotTouched,TCH3,17.91
+ccr1,1,NotTouched,TCH3,18.52
+ccr1,2,NotTouched,TCH3,17.81
+ccr1,2,NotTouched,TCH3,18.07
+ccr1,2,NotTouched,TCH3,18.38
+ccr1,3,NotTouched,TCH3,16.22
+ccr1,3,NotTouched,TCH3,16.05
+ccr1,3,NotTouched,TCH3,16.79
+Col,1,NotTouched,TCH3,16.08
+Col,1,NotTouched,TCH3,15.98
+Col,1,NotTouched,TCH3,16.19
+Col,2,NotTouched,TCH3,15.45
+Col,2,NotTouched,TCH3,15.29
+Col,2,NotTouched,TCH3,15.16
+Col,3,NotTouched,TCH3,16.88
+Col,1,Touched,TCH3,14.39
+Col,1,Touched,TCH3,14.62
+Col,1,Touched,TCH3,14.45
+Col,2,Touched,TCH3,14.84
+Col,2,Touched,TCH3,14.47
+Col,2,Touched,TCH3,14.86
+Col,3,Touched,TCH3,14.41
+Col,3,Touched,TCH3,14.47
+Col,3,Touched,TCH3,14.84
+ccr1,1,Touched,TCH3,15.54
+ccr1,1,Touched,TCH3,15.86
+ccr1,1,Touched,TCH3,15.95
+ccr1,2,Touched,TCH3,16.17
+ccr1,2,Touched,TCH3,16.33
+ccr1,2,Touched,TCH3,16.31
+ccr1,3,Touched,TCH3,16.63
+ccr1,3,Touched,TCH3,16.75
+ccr1,3,Touched,TCH3,16.85
+Col,1,NotTouched,TUK,24.23
+Col,1,NotTouched,TUK,24.42
+Col,1,NotTouched,TUK,24.58
+Col,2,NotTouched,TUK,23.79
+Col,2,NotTouched,TUK,23.79
+Col,2,NotTouched,TUK,23.69
+Col,3,NotTouched,TUK,25.08
+Col,3,NotTouched,TUK,24.96
+Col,3,NotTouched,TUK,25.28
+ccr1,1,NotTouched,TUK,24.14
+ccr1,1,NotTouched,TUK,24.23
+ccr1,1,NotTouched,TUK,24.42
+ccr1,2,NotTouched,TUK,24.91
+ccr1,2,NotTouched,TUK,25.07
+ccr1,2,NotTouched,TUK,24.75
+ccr1,3,NotTouched,TUK,24.57
+ccr1,3,NotTouched,TUK,24.44
+ccr1,3,NotTouched,TUK,24.3
+Col,1,Touched,TUK,22.52
+Col,1,Touched,TUK,22.46
+Col,1,Touched,TUK,22.26
+Col,2,Touched,TUK,22.82
+Col,2,Touched,TUK,22.69
+Col,2,Touched,TUK,22.65
+Col,3,Touched,TUK,22.6
+Col,3,Touched,TUK,22.66
+Col,3,Touched,TUK,22.75
+ccr1,1,Touched,TUK,24.03
+ccr1,1,Touched,TUK,23.91
+ccr1,1,Touched,TUK,24.06
+ccr1,2,Touched,TUK,24.8
+ccr1,2,Touched,TUK,24.46
+ccr1,2,Touched,TUK,24.56
+ccr1,3,Touched,TUK,24.74
+ccr1,3,Touched,TUK,24.84
+ccr1,3,Touched,TUK,24.78
+Col,1,NotTouched,WRKY,22.72
+Col,1,NotTouched,WRKY,22.51
+Col,1,NotTouched,WRKY,22.71
+Col,2,NotTouched,WRKY,21.99
+Col,2,NotTouched,WRKY,22.74
+Col,2,NotTouched,WRKY,22.55
+Col,3,NotTouched,WRKY,23.21
+Col,3,NotTouched,WRKY,23.12
+Col,3,NotTouched,WRKY,23.28
+ccr1,1,NotTouched,WRKY,21.88
+ccr1,1,NotTouched,WRKY,22.16
+ccr1,1,NotTouched,WRKY,22.11
+ccr1,2,NotTouched,WRKY,22.82
+ccr1,2,NotTouched,WRKY,22.91
+ccr1,2,NotTouched,WRKY,22.72
+ccr1,3,NotTouched,WRKY,23.04
+ccr1,3,NotTouched,WRKY,23.04
+ccr1,3,NotTouched,WRKY,23.05
+Col,1,Touched,WRKY,20.58
+Col,1,Touched,WRKY,20.4
+Col,1,Touched,WRKY,20.4
+Col,2,Touched,WRKY,20.8
+Col,2,Touched,WRKY,20.67
+Col,2,Touched,WRKY,20.51
+Col,3,Touched,WRKY,20.48
+Col,3,Touched,WRKY,20.47
+Col,3,Touched,WRKY,20.85
+ccr1,1,Touched,WRKY,21.69
+ccr1,1,Touched,WRKY,21.64
+ccr1,1,Touched,WRKY,21.15
+ccr1,2,Touched,WRKY,21.78
+ccr1,2,Touched,WRKY,21.99
+ccr1,2,Touched,WRKY,22.04
+ccr1,3,Touched,WRKY,22.29
+ccr1,3,Touched,WRKY,22.81
+ccr1,3,Touched,WRKY,22.4
