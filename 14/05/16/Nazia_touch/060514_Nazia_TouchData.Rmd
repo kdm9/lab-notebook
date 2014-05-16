@@ -1,0 +1,69 @@
+Nazia's touch data
+==================
+
+Read in the data, and split out tables by measurement
+```{r}
+library(ggplot2)
+library(plyr)
+
+a <- read.csv("TouchData.csv", header=T, quote='')
+summary(a)
+str(a)
+
+
+ll<-a[a$Measurement=='LeafLength',-5]
+lw<-a[a$Measurement=='LeafWidth',-5]
+pl<-a[a$Measurement=='PetioleLength',-5]
+summary(ll)
+summary(lw)
+summary(pl)
+```
+
+
+Then, do boxplots, AOV and Tukey's HSD on the full dataset, and each of the split datasets.
+```{r}
+boxplot(Value~Genotype+Treatment,data=pl)
+a_aov<-aov(Value~Genotype*Treatment+Measurement,data=a)
+summary(a_aov)
+TukeyHSD(a_aov)
+```
+
+Leaf Length shows significant Geno effect & Geno:Treatement interaction effect. There are
+significant differerences between Genotype & Treatement points as shown in the Tukey HSD output
+under $Genotype:Treatment.
+```{r}
+ll_aov<-aov(Value~Genotype*Treatment,data=ll)
+summary(ll_aov)
+TukeyHSD(ll_aov)
+```
+
+Leaf width show very significant Geno effect, sig. treatment effect, & a sig. interaction term.
+Tukeys HSD shows the only non-signficant comparison is *ccr1.1* Touch vs Non-touched.
+```{r}
+lw_aov<-aov(Value~Genotype*Treatment,data=lw)
+summary(lw_aov)
+TukeyHSD(lw_aov)
+```
+
+Again, for petiole length, pretty much everything is significant. Only WT touched vs *ccr1.1* not touched is non-significant.
+```{r}
+pl_aov<-aov(Value~Genotype*Treatment,data=pl)
+summary(pl_aov)
+TukeyHSD(pl_aov)
+```
+
+
+Summarise and plot data in a pretty ggplot graph
+```{r}
+plotData <- ddply(a, c("Genotype","Treatment","Measurement"), summarise,
+              mean = mean(Value, na.rm=TRUE),
+              sd = sd(Value,na.rm=TRUE),
+              n = sum(!is.na(Value)),
+              se = sd/sqrt(n))
+
+ggplot(plotData, aes(x=Genotype, y=mean,fill=Treatment )) +
+  geom_bar(stat="identity", position="dodge") +
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se), width=.2, position=position_dodge(width = 0.90)) +
+  facet_wrap(~Measurement) +
+  ylab("Length/Width (mm)")
+```
