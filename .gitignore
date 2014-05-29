@@ -2,5 +2,6 @@
 .~*#
 *~
 .RData
+.Rhistory
 *.bak
 .Rproj.user
