@@ -1,0 +1,28 @@
+Touch ChIP
+==========
+
+This is the analasis for fig 3 of the paper.
+
+```{r}
+chip <- read.csv("chip_qpcr_cazzonelli_adj.csv")
+summary(chip)
+boxplot(AdjTO~Target*Geno*AB, data=chip)
+targets = list()
+aovs = list()
+for (i in 1:length(levels(chip$Target))) {
+  for (j in 1:length(levels(chip$AB))) {
+    idx = i * j  
+    target = levels(chip$Target)[i]
+    ab = levels(chip$AB)[j]
+    tab =  chip[chip$Target == target & chip$AB==ab,]
+    grp = paste(target, ab)
+    print(grp)
+    print(summary(tab))
+#     av = aov(AdjTO~Geno, data=tab)
+#     print(summary(av))
+#     print(TukeyHSD(av))
+#     boxplot(AdjTO~Geno, data=tab)
+#     title(grp)
+  }
+}
+```
