@@ -1,0 +1,168 @@
+---
+title: "Keng GWAS Plots"
+output: pdf_document
+---
+
+R packages
+==========
+
+OK, so Keng has some stuff she needs plotted. Hmm, plotting, I know what we
+need:
+
+```{r setup_install}
+#install.packages("ggplot2")
+library(ggplot2)
+library(reshape2)
+library(plyr)
+```
+
+These packages from Hadley Wickham are brilliant, and frankly the only reason I
+still use `R`. That and Rstudo's markdown magic.
+
+Keng's Data
+===========
+
+OK, so we all have the software we need. Time for some data. This is NPQ
+quantification data from Keng across many *A. thaliana* accessions.
+
+What we do here might seem a little black magic, but it's actually not that bad.
+`dir()` lists files. This is the same as `ls` on the command line, for those in
+the know. When given a pattern, it only lists things that match that pattern.
+Bascially what it means is that we end up with an R list containing each of
+Keng's csv files, by name. 
+
+```{r glob}
+csvs = dir(pattern="*.csv")
+print(csvs)
+```
+
+OK, so we have a list of input files, we need to read them in. `lapply` applies
+a function over a list, returning the results as a list. If you want, run
+`lapply(1:10, function(x) {x * 2})` do convince yourselves what it does.
+
+`read.csv` does what it says on the tin, basciallly.
+
+The second bit of this converts the altitude to the correct format. If you have
+weird characters in your lists of numbers ('#N/A' in this case), `read.csv`
+thinks they're actually categorical variables (factors in R terminology). Either
+fix the files, or fix it up the hacky way. I'm me, so the hacky way it is...
+
+Finally, we just print a summary of each CSV.
+```{r read_in}
+observations = lapply(csvs, read.csv)
+observations = lapply(observations,
+                      function(df) {
+                        # Convert the altitude to numbers, not a factor
+                        df$altitude <- as.numeric(as.character(df$altitude))                       
+                        return(df)
+                      })
+for (obs in observations) {
+  print(summary(obs))
+}
+```
+
+Time for a plot. Let's just use the first observation for now to make life
+simple. So we index into the list of observation data frames (using `[[]]`,
+because it's a list, don't ask me why...) to grab the first observation.
+
+```{r plot_setup}
+obs1 = observations[[1]]
+lines = unique(as.character(obs1$line))
+summary(obs1)
+```
+
+We need to summarise the raw data down to means +- sd for plotting. We use the
+fecking amazing and impenetrable command `ddply` for this. You give it a
+dataframe, a list of variables you want to simplify down to, a function to run
+across the summary (in this case `summarise`), and a list of transformations.
+What this does is it trims the data frame down to a list of unique entries
+across the variables provided, summarising data with the functions provided.
+```{r summarise}
+obs1.sum = ddply(obs1, .(EcoID, line, condition, TimePoint, altitude), summarise,
+      meanNPQ=mean(NPQ),
+      sdNPQ=sd(NPQ)
+      )
+summary(obs1.sum)
+```
+
+
+Cool, so let's plot the whole first observation in one fell swoop.
+```{r plot_all}
+plt = ggplot(obs1.sum, aes(x=TimePoint, y=meanNPQ, group=interaction(condition, line), colour=condition)) +
+  geom_line() +
+  scale_color_manual(values=c("#0000FF", "#FF0000")) +
+  scale_x_continuous(breaks=seq(0,720,60)) +
+  scale_y_continuous(limits=c(0,6)) +
+  theme_classic() +
+  theme(text = element_text(size=18)) +
+  ylab("NPQ") + 
+  xlab("Seconds") + 
+  ggtitle("Observation 1 (all)")
+pdf(paste0("plots/obs1.pdf"), width=12, height=8) # inches, for pdf device
+print(plt)
+dev.off()
+```
+
+However, it seems Keng would like per-genotype plots for each line. This
+thousand plots bought to you by the black magic of R for loops...
+
+(Actually, i've used `head()` to only run this on the first 3 genotypes + Col-0,
+otherwise it would take all week)
+```{r plots}
+#for (geno in lines) {
+for (geno in c(head(lines, n=3), '1Col-0')) {
+  plt = ggplot(obs1.sum[obs1.sum$line == geno, ], aes(x=TimePoint, y=meanNPQ, group=condition, colour=condition)) +
+    geom_line() +
+    scale_color_manual(values=c("#0000FF", "#FF0000")) +
+    scale_x_continuous(breaks=seq(0,720,60)) +
+    scale_y_continuous(limits=c(0,6)) +
+    theme_classic() +
+    theme(text = element_text(size=16)) +
+    ylab("NPQ") + 
+    xlab("Seconds") + 
+    ggtitle(geno)
+  png(paste0("plots/obs1/", geno, ".png"), width=700, height=500)
+  print(plt)
+  dev.off()
+}
+```
+
+So, what we did there was (roughly line-wise):
+
+ - Loop through each line in the dataset
+ - Make a basic plot per line, with x, y and groups as we expect
+ - tell ggplot we want a line graph
+ - specify line colours manually
+ - Specify x-axis line breaks manually, so we can have them on minute boundaries
+ - Set the Y axis limits manually so they're the same for each plot
+ - Use the classic theme -- I find it clearer than the default one
+ - Use bigger text
+ - Set y & x axis lables & a title
+ - Open a png file for graph output
+ - print the graph to the file
+ - Close the graph file
+
+And we're done!
+
+But wait, there's more
+======================
+
+Keng has 4 timepoints. Ideally, we'd have these all in one file, but ah well.
+Still, we want to go over each timepoint and do what we just did. I won't write
+out all the code, but it would look something like:
+
+```{r allobs_loop}
+for (obs in 1:length(observations)) {
+  this.obs = observations[[obs]]
+  lines = unique(as.character(this.obs$line))
+  this.obs.sum = ddply(this.obs,
+                       .(EcoID, line, condition, TimePoint, altitude), summarise,
+                       meanNPQ=mean(NPQ),
+                       sdNPQ=sd(NPQ)
+                       )
+  # plot the first plot, as we did last time
+  for (line in lines) {
+    # plot the per-line plots as we did last time
+  }
+}
+```
