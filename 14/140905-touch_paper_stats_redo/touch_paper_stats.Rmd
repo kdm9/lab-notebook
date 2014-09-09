@@ -7,9 +7,16 @@ The analysis we did of the stats behind figure 1 was sub-standard. The model fit
 
 So, lets get the data:
 ```{r read_data}
-fig1_data <- read.csv("TouchData.csv")
+fig1_data <- read.csv("touchData.csv.newline")
 fig1_data$Genotype <- relevel(fig1_data$Genotype, ref="WT")
+fig1_data$Block <- as.numeric(fig1_data$Genotype)
+fig1_data$Block12 <- as.numeric(fig1_data$Genotype) * as.numeric(fig1_data$Tray)
 summary(fig1_data)
+table(paste(fig1_data$Genotype, fig1_data$Treatment))
+# this is your N per treatment
+table(paste(fig1_data$Block, fig1_data$Tray, fig1_data$Measurement))
+min(table(paste(fig1_data$Block, fig1_data$Tray, fig1_data$Measurement)))
+max(table(paste(fig1_data$Block, fig1_data$Tray, fig1_data$Measurement)))
 ```
 
 Now, for each phenotype, we want to fit the linear mixed effects model. We'll need the package `nlme`, which contains the `lme` function we use below.
@@ -24,10 +31,6 @@ for (pheno in phenotypes) {
   fit <- lme(Value ~ Genotype * Treatment, data = pdata, random =~ 1|Tray)
   print(pheno)
   print(summary(fit))
-#   g.fit <- tapply(predict(fit),paste(gp$Genotype,gp$Treatment),mean)
-#   oo <-  barplot(g.fit,ylim = c(0,20),main = "PetLength")
-#   segments(oo,g.fit,oo,g.fit+fit$sigma)
-#   segments(oo,g.fit,oo,g.fit-fit$sigma)
 }
 ```
 
@@ -36,9 +39,9 @@ So, we have the following "ANOVA" table (though this is NOT an anova). The value
 | ----------- | ----------- | ------------- | --------------------- |
 | Phenotype   | Genotype    | Treatment     | Genotype:Treatment    |
 | ----------- | ----------- | ------------- | --------------------- |
-| Leaf Len    | -6.1 (0.00) | -1.3 (0.09)   | 3.4 (0.00)            |
-| Leaf Width  | -3.4 (0.00) | -1.4 (0.00)   | 1.8 (0.00)            |
-| Petiole Len | -3.7 (0.00) | -4.6 (0.00)   | 2.0 (0.00)            |
+| Leaf Len    | -6.2 (0.00) | -1.3 (0.24)   | 3.5 (0.00)            |
+| Leaf Width  | -3.4 (0.00) | -1.4 (0.01)   | 1.8 (0.00)            |
+| Petiole Len | -3.7 (0.00) | -4.6 (0.01)   | 2.0 (0.01)            |
 
 
 Which is pretty sweet.
@@ -52,23 +55,48 @@ Genotype + Treatement + an interaction between the two + a random effect from
 the tray".  So, in the above table, the effects (relative to WT Non-touched)
 indicated a model estimation of roughly how large the effect of genotype,
 treatment, and the interaction is the size and direction of the interaction.
-Positive interactions bascially mean that the effect is exaggerated in the
+Positive interactions bascially mean that the effect is more positive in the
 interaction, i.e. in this case, for Leaf Len, both genotype and treatment have
 negative effects (SDG8 reduces leaf length, as does touching). Therefore, SDG8
-touched plants have shorter leaves than just the addition of the effects of
-genotype and treatment.
+touched plants have longer (more positive) leaves than just the addition of
+the effects of genotype and treatment.
 
+Plots
+=====
 
-OK, now some plots. These are NOT actual values. 
+OK, now some plots. These are NOT actual values, they are fitted values, based
+off the same model we used above. This means that these values don't nicely
+correspond to any exact value in a table of raw data, but means that they are
+more accurately annotated with stats from the model above.
 
 ```{r model_fit_plots, fig.width=6} 
 for (pheno in phenotypes) {
   pdata <- fig1_data[fig1_data$Measurement == pheno,]
-  fit <- lme(Value ~ Genotype * Treatment, data = pdata, random =~ 1|Tray)
-  fit.data <- tapply(predict(fit),paste(pdata$Genotype,pdata$Treatment),mean)
-  xx <-  barplot(fit.data,ylim = c(0,26),main = pheno)
-  segments(xx,fit.data,xx,fit.data+fit$sigma)
-  segments(xx,fit.data,xx,fit.data-fit$sigma)
+  N = nrow(pdata)
+  fit <- lme(Value ~ Treatment * Genotype, data = pdata, random =~ 1|Tray)
+  fit.data <- tapply(predict(fit),
+                     paste(pdata$Genotype, pdata$Treatment, sep='\n'),
+                     mean)
+  # re-order the factors so it's WT then ccr2
+  fit.data <- fit.data[c(3,4,1,2)]
+  names(fit.data) <- c("WT\nCtrl", "WT\nTch", "sdg8\nCtrl", "sdg8\nTch")
+  # plot to screen
+  xx <-  barplot(fit.data, ylim = c(0,25), beside = T,
+                 col=c("#000000", "#FFFFFF", "#000000", "#FFFFFF"))
+  se = fit$sigma / sqrt(N)
+  segments(xx, fit.data, xx, fit.data + (2 * se))
+  segments(xx, fit.data, xx, fit.data - (2 * se))
+  title(paste("LME-predicted values for", pheno))
+  # re-plot to pdf
+  pdf(paste0(pheno, '_fitted.pdf'), width=3.5)
+  xx <-  barplot(fit.data, ylim = c(0,25), beside = T,
+                 col=c("#000000", "#FFFFFF", "#000000", "#FFFFFF"))
+  se = fit$sigma / sqrt(N)
+  segments(xx, fit.data, xx, fit.data + (2 * se))
+  segments(xx, fit.data, xx, fit.data - (2 * se))
+  title(paste(pheno))
+  dev.off()
+  #
   print(paste("Predicted values for", pheno))
 }
 ```
