@@ -5,3 +5,4 @@
 .Rhistory
 *.bak
 .Rproj.user
+.ipynb_checkpoints
